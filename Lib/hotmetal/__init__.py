@@ -146,7 +146,8 @@ class HotMetalBase:
 		else:
 			string.append("<html>")
 		string.append("<head>")
-		string.append("<title>%s</title>" % (self.title))
+		if self.title:
+			string.append("<title>%s</title>" % (self.title))
 
 		for item in self.headtags:
 			string.append(item.GenerateHTML())
