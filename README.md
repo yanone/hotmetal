@@ -5,7 +5,8 @@ HoTMetaL (HTML) assembler for Python.
 
 Example 1:
 
-```import hotmetal
+```python
+import hotmetal
 html = hotmetal.HotMetal()
 html.T('Hello world.')
 print html.GeneratePage() # Print whole HTML page```
@@ -15,7 +16,8 @@ Output:
 
 Example 2:
 
-```import hotmetal
+```python
+import hotmetal
 html = hotmetal.HotMetal()
 html.T('Hello world.')
 print html.GenerateBody() # Print just the contents of the <body>```
