@@ -235,7 +235,9 @@ class BaseHTMLTag:
 					for c in string:
 						if not c in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_:.':
 							ForbiddenCharacterFound = True
-					if ForbiddenCharacterFound:
+					if not ForbiddenCharacterFound:
+						return string
+					else:
 						self.parent.Warning("Attribute %s of type ID contains illegal character(s) (%s) for for tag &lt;%s&gt;." % (attribute, c, self.tag))
 						if not self.parent.besuperstrict:
 							return string
