@@ -12,13 +12,6 @@ class Text:
 	def GenerateHTML(self):
 		return self.html
 
-def smart_unicode(s, encoding='utf-8', errors='strict'):
-	if type(s) in (str, int, int, float, type(None)):
-		return str(s)
-	elif type(s) is str or hasattr(s, '__unicode__'):
-		return str(s, encoding, errors)
-	else:
-		return str(str(s), encoding, errors)
 
 class HotMetalBase:
 
@@ -129,7 +122,7 @@ class HotMetalBase:
 		for tag in self.bodytags:
 			html.append(tag.GenerateHTML())
 
-		return glue.join(map(smart_unicode, html))
+		return glue.join(html)
 
 
 	def GeneratePage(self, glue = ''):
@@ -174,7 +167,7 @@ class HotMetalBase:
 
 		string.append("</html>")
 
-		return glue.join(map(smart_unicode, string))
+		return glue.join(string)
 
 
 class BaseHTMLTag:
