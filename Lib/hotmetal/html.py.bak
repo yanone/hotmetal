@@ -1,4 +1,4 @@
-from .__init__ import *
+from __init__ import *
 
 class HotMetal(HotMetalBase):
 	def A(self, accesskey = None, charset = None, coords = None, href = None, hreflang = None, name = None, onblur = None, onfocus = None, rel = None, rev = None, shape = None, tabindex = None, target = None, type = None, lang = None, style = None, onclick = None, onmouseout = None, onkeypress = None, title = None, onkeydown = None, onmousedown = None, class_ = None, onmousemove = None, onmouseover = None, onmouseup = None, onkeyup = None, ondblclick = None, id = None, dir = None):

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from .html import *
+from html import *
 import types
 
 
@@ -13,12 +13,12 @@ class Text:
 		return self.html
 
 def smart_unicode(s, encoding='utf-8', errors='strict'):
-	if type(s) in (str, int, int, float, type(None)):
-		return str(s)
+	if type(s) in (unicode, int, long, float, types.NoneType):
+		return unicode(s)
 	elif type(s) is str or hasattr(s, '__unicode__'):
-		return str(s, encoding, errors)
+		return unicode(s, encoding, errors)
 	else:
-		return str(str(s), encoding, errors)
+		return unicode(str(s), encoding, errors)
 
 class HotMetalBase:
 
@@ -65,20 +65,20 @@ class HotMetalBase:
 		pass
 
 	def RunningID(self):
-		"""\
+		u"""\
 		Just a number being incremented.
 		"""
 		self.runningID += 1
 		return self.runningID
 
 	def Warning(self, string):
-		"""\
+		u"""\
 		Issue a warning.
 		"""
 		self.warnings.append(string)
 
 	def OutputWarnings(self, glue = '\n'):
-		"""\
+		u"""\
 		Output Warnings for debugging.
 		"""
 		return glue.join(map(str, self.warnings))
@@ -100,7 +100,7 @@ class HotMetalBase:
 
 	# META TAGS
 	def CSS(self, selector, key, value):
-		if selector not in self.css:
+		if not self.css.has_key(selector):
 			self.css[selector] = {}
 		self.css[selector][key] = value
 
@@ -123,7 +123,7 @@ class HotMetalBase:
 
 	# OUTPUT
 
-	def GenerateBody(self, glue = ''):
+	def GenerateBody(self, glue = u''):
 		html = []
 
 		for tag in self.bodytags:
@@ -132,7 +132,7 @@ class HotMetalBase:
 		return glue.join(map(smart_unicode, html))
 
 
-	def GeneratePage(self, glue = ''):
+	def GeneratePage(self, glue = u''):
 		string = []
 
 		# HEAD
@@ -290,7 +290,7 @@ class BaseHTMLTag:
 		html.append(self.tag)
 		# Attributes
 		for attr in self.attributes:
-			if attr in self.attributes:
+			if self.attributes.has_key(attr):
 				if self.attributes[attr] == '__//empty//__':
 					html.append('%s' % (attr))
 				elif self.attributes[attr]:
