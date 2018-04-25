@@ -3,7 +3,6 @@
 from html import *
 import types
 
-#from BeautifulSoup import BeautifulSoup
 
 
 class Text:
@@ -130,9 +129,6 @@ class HotMetalBase:
 		for tag in self.bodytags:
 			html.append(tag.GenerateHTML())
 
-#		soup = BeautifulSoup(glue.join(map(str,html)))
-#		good_html = soup.prettify()
-#		return good_html
 		return glue.join(map(smart_unicode, html))
 
 
@@ -178,10 +174,6 @@ class HotMetalBase:
 
 		string.append("</html>")
 
-#		soup = BeautifulSoup(glue.join(map(str,string)))
-#		good_html = soup.prettify()
-#		return good_html
-#		return glue.join(map(str,string))
 		return glue.join(map(smart_unicode, string))
 
 
