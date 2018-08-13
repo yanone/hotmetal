@@ -122,7 +122,7 @@ class HotMetalBase:
 		for tag in self.bodytags:
 			html.append(tag.GenerateHTML())
 
-		return glue.join(html)
+		return glue.join(map(str, html))
 
 
 	def GeneratePage(self, glue = ''):
@@ -167,7 +167,8 @@ class HotMetalBase:
 
 		string.append("</html>")
 
-		return glue.join(string)
+		return glue.join(map(str, string))
+#		return glue.join(string)
 
 
 class BaseHTMLTag:
@@ -186,7 +187,8 @@ class BaseHTMLTag:
 			if self.DocTypeAllowed(alloweddoctypes):
 				try:
 					#a = str(string)
-					return string.encode(self.parent.charset)
+					return string
+#					return string.encode(self.parent.charset)
 				except:
 					self.parent.Warning("Attribute %s could not be converted to string for tag &lt;%s&gt; and charset %s." % (attribute, self.tag, self.parent.charset))
 					if not self.parent.besuperstrict:

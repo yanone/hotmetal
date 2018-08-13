@@ -178,8 +178,8 @@ class HotMetal(HotMetalBase):
 	def _FONT(self):
 		self.bodytags.append(FONT_())
 
-	def FORM(self, action = None, accept = None, accept_charset = None, enctype = None, method = None, name = None, onreset = None, onsubmit = None, target = None, lang = None, style = None, onclick = None, onmouseout = None, onkeypress = None, title = None, onkeydown = None, onmousedown = None, class_ = None, onmousemove = None, onmouseover = None, onmouseup = None, onkeyup = None, ondblclick = None, id = None, dir = None):
-		self.bodytags.append(FORM(self, action, accept, accept_charset, enctype, method, name, onreset, onsubmit, target, lang, style, onclick, onmouseout, onkeypress, title, onkeydown, onmousedown, class_, onmousemove, onmouseover, onmouseup, onkeyup, ondblclick, id, dir))
+	def FORM(self, action = None, accept = None, accept_charset = None, autocomplete = None, enctype = None, method = None, name = None, onreset = None, onsubmit = None, target = None, lang = None, style = None, onclick = None, onmouseout = None, onkeypress = None, title = None, onkeydown = None, onmousedown = None, class_ = None, onmousemove = None, onmouseover = None, onmouseup = None, onkeyup = None, ondblclick = None, id = None, dir = None):
+		self.bodytags.append(FORM(self, action, accept, accept_charset, autocomplete, enctype, method, name, onreset, onsubmit, target, lang, style, onclick, onmouseout, onkeypress, title, onkeydown, onmousedown, class_, onmousemove, onmouseover, onmouseup, onkeyup, ondblclick, id, dir))
 
 	def _FORM(self):
 		self.bodytags.append(FORM_())
@@ -316,8 +316,8 @@ class HotMetal(HotMetalBase):
 	def _MENU(self):
 		self.bodytags.append(MENU_())
 
-	def META(self, name = None, content = None, http_equiv = None, scheme = None, lang = None, style = None, onclick = None, onmouseout = None, onkeypress = None, title = None, onkeydown = None, onmousedown = None, class_ = None, onmousemove = None, onmouseover = None, onmouseup = None, onkeyup = None, ondblclick = None, id = None, dir = None):
-		self.headtags.append(META(self, name, content, http_equiv, scheme, lang, style, onclick, onmouseout, onkeypress, title, onkeydown, onmousedown, class_, onmousemove, onmouseover, onmouseup, onkeyup, ondblclick, id, dir))
+	def META(self, name = None, content = None, property = None, http_equiv = None, scheme = None, lang = None, style = None, onclick = None, onmouseout = None, onkeypress = None, title = None, onkeydown = None, onmousedown = None, class_ = None, onmousemove = None, onmouseover = None, onmouseup = None, onkeyup = None, ondblclick = None, id = None, dir = None):
+		self.headtags.append(META(self, name, content, property, http_equiv, scheme, lang, style, onclick, onmouseout, onkeypress, title, onkeydown, onmousedown, class_, onmousemove, onmouseover, onmouseup, onkeyup, ondblclick, id, dir))
 
 	def NOFRAMES(self, lang = None, style = None, onclick = None, onmouseout = None, onkeypress = None, title = None, onkeydown = None, onmousedown = None, class_ = None, onmousemove = None, onmouseover = None, onmouseup = None, onkeyup = None, ondblclick = None, id = None, dir = None):
 		self.bodytags.append(NOFRAMES(self, lang, style, onclick, onmouseout, onkeypress, title, onkeydown, onmousedown, class_, onmousemove, onmouseover, onmouseup, onkeyup, ondblclick, id, dir))
@@ -993,7 +993,7 @@ class FONT_(BaseHTMLClosingTag):
 		self.tag = 'font'
 
 class FORM(BaseHTMLTag):
-	def __init__(self, parent, action, accept, accept_charset, enctype, method, name, onreset, onsubmit, target, lang, style, onclick, onmouseout, onkeypress, title, onkeydown, onmousedown, class_, onmousemove, onmouseover, onmouseup, onkeyup, ondblclick, id, dir):
+	def __init__(self, parent, action, accept, accept_charset, autocomplete, enctype, method, name, onreset, onsubmit, target, lang, style, onclick, onmouseout, onkeypress, title, onkeydown, onmousedown, class_, onmousemove, onmouseover, onmouseup, onkeyup, ondblclick, id, dir):
 		self.tag = 'form'
 		self.singletag = False
 		self.parent = parent
@@ -1004,12 +1004,14 @@ class FORM(BaseHTMLTag):
 		self.attributes['action'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'action', action)
 		self.attributes['accept'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'accept', accept)
 		self.attributes['accept-charset'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'accept-charset', accept_charset)
+		self.attributes['autocomplete'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'autocomplete', autocomplete)
 		self.attributes['enctype'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'enctype', enctype)
 		self.attributes['method'] = self.HtmlVarTypeFixedList('strict,transitional,frameset', 'method', method, ('get', 'post'))
 		self.attributes['name'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'name', name)
 		self.attributes['onreset'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'onreset', onreset)
 		self.attributes['onsubmit'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'onsubmit', onsubmit)
 		self.attributes['target'] = self.HtmlVarTypeCDATA('transitional,frameset', 'target', target)
+
 
 class FORM_(BaseHTMLClosingTag):
 	def __init__(self):
@@ -1419,7 +1421,7 @@ class MENU_(BaseHTMLClosingTag):
 		self.tag = 'menu'
 
 class META(BaseHTMLTag):
-	def __init__(self, parent, name, content, http_equiv, scheme, lang, style, onclick, onmouseout, onkeypress, title, onkeydown, onmousedown, class_, onmousemove, onmouseover, onmouseup, onkeyup, ondblclick, id, dir):
+	def __init__(self, parent, name, property, content, http_equiv, scheme, lang, style, onclick, onmouseout, onkeypress, title, onkeydown, onmousedown, class_, onmousemove, onmouseover, onmouseup, onkeyup, ondblclick, id, dir):
 		self.tag = 'meta'
 		self.singletag = True
 		self.parent = parent
@@ -1428,6 +1430,7 @@ class META(BaseHTMLTag):
 
 		# Attributes of <meta>
 		self.attributes['name'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'name', name)
+		self.attributes['property'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'property', property)
 		self.attributes['content'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'content', content)
 		self.attributes['http-equiv'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'http-equiv', http_equiv)
 		self.attributes['scheme'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'scheme', scheme)
