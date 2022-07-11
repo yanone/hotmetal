@@ -259,8 +259,8 @@ class HotMetal(HotMetalBase):
 	def IMG(self, align = None, alt = None, border = None, height = None, hspace = None, ismap = None, longdesc = None, name = None, src = None, usemap = None, vspace = None, width = None, lang = None, style = None, onclick = None, onmouseout = None, onkeypress = None, title = None, onkeydown = None, onmousedown = None, class_ = None, onmousemove = None, onmouseover = None, onmouseup = None, onkeyup = None, ondblclick = None, id = None, dir = None):
 		self.bodytags.append(IMG(self, align, alt, border, height, hspace, ismap, longdesc, name, src, usemap, vspace, width, lang, style, onclick, onmouseout, onkeypress, title, onkeydown, onmousedown, class_, onmousemove, onmouseover, onmouseup, onkeyup, ondblclick, id, dir))
 
-	def INPUT(self, placeholder = None, accept = None, accesskey = None, align = None, alt = None, autocomplete = None, checked = None, disabled = None, ismap = None, maxlength = None, name = None, onblur = None, onchange = None, onfocus = None, onselect = None, readonly = None, size = None, src = None, tabindex = None, type = None, usemap = None, value = None, lang = None, style = None, onclick = None, onmouseout = None, onkeypress = None, title = None, onkeydown = None, onmousedown = None, class_ = None, onmousemove = None, onmouseover = None, onmouseup = None, onkeyup = None, ondblclick = None, id = None, dir = None):
-		self.bodytags.append(INPUT(self, placeholder, accept, accesskey, align, alt, autocomplete, checked, disabled, ismap, maxlength, name, onblur, onchange, onfocus, onselect, readonly, size, src, tabindex, type, usemap, value, lang, style, onclick, onmouseout, onkeypress, title, onkeydown, onmousedown, class_, onmousemove, onmouseover, onmouseup, onkeyup, ondblclick, id, dir))
+	def INPUT(self, accept = None, accesskey = None, align = None, alt = None, autocomplete = None, checked = None, disabled = None, ismap = None, maxlength = None, name = None, onblur = None, onchange = None, onfocus = None, onselect = None, placeholder = None, readonly = None, size = None, src = None, tabindex = None, type = None, usemap = None, value = None, lang = None, style = None, onclick = None, onmouseout = None, onkeypress = None, title = None, onkeydown = None, onmousedown = None, class_ = None, onmousemove = None, onmouseover = None, onmouseup = None, onkeyup = None, ondblclick = None, id = None, dir = None):
+		self.bodytags.append(INPUT(self, accept, accesskey, align, alt, autocomplete, checked, disabled, ismap, maxlength, name, onblur, onchange, onfocus, onselect, readonly, size, src, tabindex, type, usemap, value, lang, style, onclick, onmouseout, onkeypress, placeholder, title, onkeydown, onmousedown, class_, onmousemove, onmouseover, onmouseup, onkeyup, ondblclick, id, dir))
 
 	def INS(self, cite = None, datetime = None, lang = None, style = None, onclick = None, onmouseout = None, onkeypress = None, title = None, onkeydown = None, onmousedown = None, class_ = None, onmousemove = None, onmouseover = None, onmouseup = None, onkeyup = None, ondblclick = None, id = None, dir = None):
 		self.bodytags.append(INS(self, cite, datetime, lang, style, onclick, onmouseout, onkeypress, title, onkeydown, onmousedown, class_, onmousemove, onmouseover, onmouseup, onkeyup, ondblclick, id, dir))
@@ -1246,7 +1246,7 @@ class IMG(BaseHTMLTag):
 		self.attributes['width'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'width', width)
 
 class INPUT(BaseHTMLTag):
-	def __init__(self, parent, placeholder, accept, accesskey, align, alt, autocomplete, checked, disabled, ismap, maxlength, name, onblur, onchange, onfocus, onselect, readonly, size, src, tabindex, type, usemap, value, lang, style, onclick, onmouseout, onkeypress, title, onkeydown, onmousedown, class_, onmousemove, onmouseover, onmouseup, onkeyup, ondblclick, id, dir):
+	def __init__(self, parent, accept, accesskey, align, alt, autocomplete, checked, disabled, ismap, maxlength, name, onblur, onchange, onfocus, onselect, readonly, size, src, tabindex, type, usemap, value, lang, style, onclick, onmouseout, onkeypress, placeholder, title, onkeydown, onmousedown, class_, onmousemove, onmouseover, onmouseup, onkeyup, ondblclick, id, dir):
 		self.tag = 'input'
 		self.singletag = True
 		self.parent = parent
@@ -1254,7 +1254,6 @@ class INPUT(BaseHTMLTag):
 		self.AddUniversalAttributes(class_, id, style, title, dir, lang, onclick, ondblclick, onmousedown, onmouseup, onmouseover, onmousemove, onmouseout, onkeypress, onkeydown, onkeyup)
 
 		# Attributes of <input>
-		self.attributes['placeholder'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'placeholder', placeholder)
 		self.attributes['accept'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'accept', accept)
 		self.attributes['accesskey'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'accesskey', accesskey)
 		self.attributes['align'] = self.HtmlVarTypeFixedList('transitional,frameset', 'align', align, ('top', 'middle', 'bottom', 'left', 'center', 'right'))
@@ -1269,6 +1268,7 @@ class INPUT(BaseHTMLTag):
 		self.attributes['onchange'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'onchange', onchange)
 		self.attributes['onfocus'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'onfocus', onfocus)
 		self.attributes['onselect'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'onselect', onselect)
+		self.attributes['placeholder'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'placeholder', placeholder)
 		self.attributes['readonly'] = self.HtmlVarTypeEmpty('strict,transitional,frameset', 'readonly', readonly)
 		self.attributes['size'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'size', size)
 		self.attributes['src'] = self.HtmlVarTypeCDATA('strict,transitional,frameset', 'src', src)
